@@ -59,4 +59,9 @@ jobs:
 
     - name: Verify pods are running
       run: |
-        kubectl get pods
+        kubectl get all
+
+    - name: Test connection to app
+      run: |
+        curl -v http://localhost:5000
+        curl -v http://localhost:5000/health
