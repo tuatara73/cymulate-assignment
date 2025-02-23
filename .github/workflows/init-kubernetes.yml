@@ -59,4 +59,4 @@ jobs:
 
     - name: 'Deploy Helm'
       run: |
-        helm install cymulate-app -f ./charts/values.yaml cymulate-app/cymulate-app --generate-name
+        helm install cymulate-app -f ./charts/values.yaml cymulate-app/cymulate-app
