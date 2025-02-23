@@ -26,7 +26,7 @@ jobs:
         curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.18.0/kind-linux-amd64
         chmod +x ./kind
         sudo mv kind /usr/local/bin/
-        
+
     - name: Create Kind Kubernetes cluster with port 5000 mapped
       run: |
         cat <<EOF | kind create cluster --name github-actions-cluster --config=-
@@ -65,7 +65,7 @@ jobs:
       run: |
         sleep 90
 
-    - name: Verify pods are running
+    - name: Verify all is running
       run: |
         kubectl get all
 
