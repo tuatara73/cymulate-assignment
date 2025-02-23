@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: my-dockerhub-user/flask-app
-  tag: latest
+  repository: tuatara/cymulate
+  tag: cymulate-app
   pullPolicy: IfNotPresent
 
 service:
