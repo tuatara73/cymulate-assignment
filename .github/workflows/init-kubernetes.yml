@@ -58,10 +58,5 @@ jobs:
         helm version
 
     - name: 'Deploy Helm'
-      uses: 'deliverybot/helm@v1'
-      with:
-        context: './charts'
-        release: 'cymulate-app'
-        namespace: 'default'
-        chart: 'cymulate-app'
-        value-files: 'values.yaml'
+      run: |
+        helm install cymulate-app -f ./charts/values.yaml
