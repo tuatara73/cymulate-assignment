@@ -31,6 +31,18 @@ jobs:
       run: |
         kind create cluster --name github-actions-cluster
 
+    - name: Create Kind Kubernetes cluster with port 5000 mapped
+      run: |
+        cat <<EOF | kind create cluster --name github-actions-cluster --config=-
+        kind: Cluster
+        apiVersion: kind.x-k8s.io/v1alpha4
+        nodes:
+        - role: control-plane
+          extraPortMappings:
+          - containerPort: 30500  # Inside Kind (NodePort)
+            hostPort: 5000        # Exposed to GitHub Runner localhost
+        EOF
+
     - name: Set up kubectl
       run: |
         export KUBEVERSION=$(kubectl version --short | awk -Fv '/Server Version/ {print $3}')

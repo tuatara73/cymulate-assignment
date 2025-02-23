@@ -9,11 +9,11 @@ service:
   type: NodePort
   port: 80
   targetPort: 5000
-  nodePort: 30080
+  nodePort: 30500
 
 ingress:
   enabled: true
-  host: flask-app.local
+  host: cymulate-app.local
 
 resources:
   limits:
