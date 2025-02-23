@@ -33,8 +33,8 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ../pipeline/Dockerfile
+          context: ./pipeline
+          file: ./pipeline/Dockerfile
           push: true
           tags: |
             ${{ env.DOCKER_USER }}/${{ env.REPO_NAME }}:${{ env.TAG }}-${{ github.run_id }}
