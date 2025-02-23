@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   kind-cluster-setup:
@@ -60,9 +57,11 @@ jobs:
       run: |
         helm version
 
-    - name: Deploy your app or Kubernetes resources
+    - name: 'Deploy Helm'
+      uses: 'deliverybot/helm@v1'
       with:
-        context: ./charts
-        run: |
-          helm install cymulate-app -f values.yaml cymulate-app/cymulate-app
-        
+        context: './charts'
+        release: 'cymulate-app'
+        namespace: 'default'
+        chart: 'cymulate-app'
+        value-files: 'values.yaml'
