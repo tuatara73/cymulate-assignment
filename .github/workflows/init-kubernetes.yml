@@ -40,15 +40,7 @@ jobs:
     - name: Verify kubectl is working
       run: |
         kubectl cluster-info
-
-    - name: install ingress controller
-      run: |
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-
-    - name: Verify Ingress Controller is running
-      run: |
-        kubectl get pods -n ingress-nginx
-
+      
     - name: Install Helm
       run: |
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
@@ -60,3 +52,7 @@ jobs:
     - name: 'Deploy Helm'
       run: |
         helm install cymulate-app -f ./charts/values.yaml ./charts
+
+    - name: Verify pods are running
+      run: |
+        kubectl get pods
